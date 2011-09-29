@@ -1,0 +1,85 @@
+{embed='includes/head'}
+
+</head>
+<body>
+	<div class="container">
+		<h3>Customer Support Center</h3>
+		{exp:channel:entries channel="support" limit="1" entry_id="{last_segment}" disable="categories|category_fields|pagination" dynamic="no" status="Open|Resolved"}
+			{if logged_in_group_id == "1" OR  logged_in_member_id == author_id}		
+				<script type="text/javascript">
+					<!--
+					function CloseTicket() {
+					var answer = confirm ("Do you really want to close this ticket? Doing so will completely remove it from the queue and you will no longer have access to this ticket!")
+					if (answer)
+					window.location="{site_url}index.php/support/ticket_resolved/{entry_id}/closed"
+					}
+					// -->
+				</script>
+		
+		
+				<table id="tickets">
+					<thead>
+					<td colspan="2"><strong>{title}</strong>
+						<span class="editentry">
+							<a class="ticket_edit" href="{path='support/edit/{entry_id}'}">Edit Ticket Info</a>  :  
+							{if status == "resolved"}<a class="ticket_resolved" href="{path='support/ticket_resolved/{entry_id}/open'}">Reopen Ticket</a>  :  {/if}
+							{if status == "open"}<a class="ticket_resolved" href="{path='support/ticket_resolved/{entry_id}/resolved'}">Mark as Resolved</a>  :  {/if}
+							<a class="ticket_closed" onClick="CloseTicket();" href="#">Close Ticket</a>
+						</span>
+						</td>
+					</thead>
+					<tr>
+						<td class="odd">
+						<strong>Ticket Status</strong>
+						</td>
+						<td class="even">
+							<span class="entrystatus {status}">{status}</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="odd">
+						<strong>Date Submitted</strong>
+						</td>
+						<td class="even">
+						 {entry_date format="%M %d, %Y - %h:%i %A"}
+						</td>
+					</tr>
+					<tr>
+						<td class="odd">
+						<strong>Problem URL</strong>
+						</td>
+						<td class="even">
+						 <a href="{cf_siteurl}">{cf_siteurl}</a>
+						</td>
+					</tr>
+					<td colspan="2" class="even">
+						<strong>Description</strong>: <br /><br />
+						{cf_issue}
+					</td>
+				</table>
+				<p class="aligncenter small">Not the ticket you're looking for? <br /><a href="{path='support/tickets'}">View all my tickets</a></p>
+		
+				{embed="support/comments" template_group="support" template="support"}
+		
+			{if:else}
+				<div class="note warn">
+					<strong>Sorry! You do not have access to view this ticket.</strong><br />
+					Perhaps you need to login? If you believe you have reached this page in error, please contact us.<br />
+					If you need more immediate assistance, please use the support forum for support related inquiries.
+				</div>
+			{/if}
+			{if no_results}
+			<div class="note alert">
+				<strong>Ticket <span style="color:white;">ID#{last_segment}</span> Not Found!</strong>
+				<br />
+				This may be because it was deleted or closed. If you need additional help, please use the support forum.
+			</div>
+			{/if}
+		{/exp:channel:entries}
+	</div>
+
+	{embed='includes/footer'}
+
+
+</body>
+</html>

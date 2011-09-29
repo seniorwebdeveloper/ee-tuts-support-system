@@ -1,0 +1,37 @@
+<h4 class="clearfix">Follow-Up</h4>
+	<div id="comments" style="width:100%;">
+	<a id="comments"></a>
+		<ul class="commentlist">
+			{exp:comment:entries sort="asc" orderby="date" limit="150" channel="safecracker" entry_id="{segment_3}" dynamic="no" status="Open|Closed|Resolved"}
+				<li id="li-comment-{comment_id}">
+				<div id="comment-{comment_id}" class="single-comment">
+				<div class="comment-author vcard">
+					{if avatar}
+						<img src="{avatar_url}" width="{avatar_image_width}" height="{avatar_image_height}" alt="{author}'s avatar" />
+					{/if}				</div>
+				<div class="comment-meta commentmetadata">
+				<h6> 
+				  Posted on {comment_date format="%M %d, %Y"} by 
+				  {if author_id == "1"}
+				  {url_as_author} - (Site Administrator)
+				  {if:else}
+				  {url_as_author}
+				  {/if}
+				</h6>
+				{comment}
+				</div>
+				</div>
+				</li>
+			{/exp:comment:entries}
+		</ul>
+	</div>
+	<hr />
+	<h4 class="clearfix">Respond:</h4>
+	{exp:comment:form channel="safecracker" entry_id="{segment_3}"}
+	<p><textarea name="comment" cols="170" rows="10">{comment}</textarea></p>
+	{if captcha}
+	<p class="captcha">{captcha} &nbsp; <input type="text" name="captcha" value="{captcha_word}" maxlength="20" /></p>
+	{/if}
+	<p><input type="checkbox" name="notify_me" value="yes" {notify_me} /> Notify me of follow-up comments?</p>
+	<p><input type="submit" name="submit" value="Submit" /></p>
+	{/exp:comment:form}

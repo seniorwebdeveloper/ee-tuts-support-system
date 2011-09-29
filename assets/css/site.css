@@ -1,0 +1,99 @@
+body{
+	padding-top: 20px;
+}
+fieldset{
+	border: 1px solid #eee;
+	padding: 15px;
+
+}
+legend{
+	font-size: 18px;
+	background-color: #fff;
+	margin-top: 15px;
+	padding: 8px;
+	border: 1px solid #eee;
+	-moz-box-shadow: 1px 1px 2px #ccc;
+	-webkit-box-shadow: 1px 1px 2px #ccc;
+	box-shadow: 1px 1px 2px #ccc;
+}
+.input_xlarge{
+	width: 200px;
+}
+#cf_issue{
+	width: 95%;
+}
+	
+table#tickets {width:100%;border-left:1px solid #ebebeb;}
+
+table#tickets thead td {
+	color: #555;
+	text-shadow: #fff 1px 1px 0;
+	background: #ddd ;
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #ddd;
+	font-weight: normal;
+	border-right:1px solid #cfcfcf;
+	
+}
+table#tickets tr.odd td {
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #ebebeb;
+	border-top: 1px solid #fff;
+	padding: 15px;
+	border-right:1px solid #ebebeb;
+}
+table#tickets tr.even td {
+	background-color: #f9f9f9;
+	padding: 15px;
+	border-bottom: 1px solid #ededed;
+	border-top: 1px solid #fff;
+	border-right:1px solid #ebebeb;
+}
+
+table#tickets td {
+	margin-bottom: 0;
+	font-size: 13px;
+	color: #949494;
+	text-shadow: 1px 1px 0px #fff;
+	padding: 5px;
+}
+
+table#tickets td a {
+	text-shadow:none;
+	font-size: 14px;
+}
+
+table#tickets td.odd {
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #ebebeb;
+	border-top: 1px solid #fff;
+	padding: 15px;
+	border-right:1px solid #ebebeb;
+}
+
+table#tickets td.even {
+	background-color: #f9f9f9;
+	padding: 15px;
+	border-bottom: 1px solid #ededed;
+	border-top: 1px solid #fff;
+	border-right:1px solid #ebebeb;
+}
+
+.open {color:green;text-transform: capitalize;}
+.closed {color:red;text-transform: capitalize;}
+.resolved {color:green;text-transform: capitalize;}
+
+
+table#tickets .editentry {font-size:11px;float:right;font-weight:normal;line-height:24px;text-shadow:none;}
+table#tickets .editentry a.ticket_edit {color:red;font-size:11px;}
+table#tickets .editentry a.ticket_resolved {color:green;font-size:11px;}
+table#tickets .editentry a.ticket_closed {color:black;font-size:11px;}
+table#tickets .editentry a:hover {text-doecoration:none;}
+div.comment-author.vcard {
+	float: left;
+	margin: 0 15px 15px;
+}
+.single-comment{
+	margin-bottom:20px;
+	
+}

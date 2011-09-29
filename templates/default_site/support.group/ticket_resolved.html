@@ -1,0 +1,36 @@
+{exp:channel:entries channel="support" limit="1" entry_id="{segment_3}" disable="categories|category_fields|pagination" dynamic="no" status="Open|Closed|Resolved"}
+{if logged_in_group_id == "1" OR  logged_in_member_id == author_id}
+<script type="text/javascript">
+    window.onload = function () {
+        var form = document.getElementById("UpdateStatus");
+        form.submit();
+    };
+</script>
+{exp:safecracker
+	id="UpdateStatus"
+	channel="support"
+	{if segment_4 == 'resolved'}
+	return="support/ticket_complete"
+	{/if}
+	{if segment_4 == 'open'}
+	return="support/tickets"
+	{/if}
+	{if segment_4 == 'closed'}
+	return="support/tickets"
+	{/if}
+	include_jquery="no"
+	{!-- change the secure_action and secure_return parameters to yes if you are putting this all on SSL--}
+	secure_action="no"
+	secure_return="no"
+	error_handling="inline"
+	preserve_checkboxes="yes"
+	safecracker_head="no"
+	author_only="yes"
+	entry_id="{segment_3}"
+	require_entry="yes"
+	}
+	<input type="hidden" name="status" id="status" value="{segment_4}"/>
+	<input type="hidden" name="allow_comments" value="y" />
+{/exp:safecracker}
+{/if}
+{/exp:channel:entries}

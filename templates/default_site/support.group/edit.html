@@ -1,0 +1,85 @@
+{embed='includes/head'}
+
+
+<style type="text/css">
+#wrapper fieldset {border:1px solid #ccc;}	
+</style>
+
+</head>
+<body>
+	<div class="container">
+
+{exp:safecracker
+	channel="support"
+	return="support/ticket/{segment_3}"
+	include_jquery="no"
+	preserve_checkboxes="yes"
+	safecracker_head="no"
+	author_only="yes"
+	entry_id="{segment_3}"
+	require_entry="yes"
+	}
+	<input type="hidden" name="allow_comments" value="y" />
+	
+	{if field_errors:count}
+	<div class="note alert">
+		<ul>
+		{field_errors}
+			<li>{error}</li>
+		{/field_errors}
+		</ul>
+	</div>
+	{/if}
+	
+	<h2>Edit Ticket ID# {entry_id}</h2>
+
+	<div class="note warn">
+		<h4>Password Update Required</h4>
+		<p>For security measures, you will need to resupply any initially required passwords in order to update this ticket.</p>
+	</div>
+	
+		<div class="eight columns alpha">
+			<fieldset>
+				<legend>Communication</legend>
+			 	<label for="ticket_member_name">Name</label>
+			 	<input class="input_xlarge" type="text" name="ticket_member_name" id="ticket_member_name" value="{screen_name}" size="50" maxlength="100" />
+			 	<label for="ticket_email_username">Email</label>
+			 	<input class="input_xlarge" type="text" name="ticket_email_username" id="ticket_email_username" value="{email}" size="50" maxlength="100" />
+				<label for="title">Ticket Title</label>
+				<input class="input_xlarge" type="text" name="title" id="title" value="{title}"/>
+				<label for="cf_issue">Please describe the issue in detail as well as any steps required to reproduce:</label><br />
+				{field:cf_issue}
+			</fieldset>
+		</div>
+		
+		<div class="eight columns omega">
+			<fieldset>
+				  <legend>Your Site Information:</legend>
+					<label for="ticket_siteurl">Site URL:</label>
+					<input class="input_xlarge" type="text" name="cf_siteurl" id="cf_siteurl" value="{cf_siteurl}" size="50" maxlength="100" />
+					<label for="cf_control_panel_url">ExpressionEngine Control Panel URL</label>
+					<input class="input_xlarge" type="text" name="cf_control_panel_url" id="cf_control_panel_url" value="{cf_control_panel_url}" size="50" maxlength="100" />
+					<label for="cf_control_panel_username">ExpressionEngine Admin Username</label>
+					<input class="input_xlarge" type="text" name="cf_control_panel_username" id="cf_control_panel_username" value="{cf_control_panel_username}" size="50" maxlength="100" />
+					<label for="cf_control_panel_password">ExpressionEngine Admin Password</label>
+					<input class="input_xlarge" type="password" name="cf_control_panel_password" id="cf_control_panel_password" value="{cf_control_panel_password}" size="50" maxlength="100" />
+					<label for="cf_ftp_host">FTP Server:</label>
+					<input class="input_xlarge" type="text" name="cf_ftp_host" id="cf_ftp_host" value="{cf_ftp_host}" size="50" maxlength="100" />
+					<label for="ticket_ftp_u">FTP User:</label>
+					<input class="cf_ftp_username" type="text" name="cf_ftp_username" id="cf_ftp_username" value="{cf_ftp_username}" size="50" maxlength="100" />
+					<label for="cf_ftp_password">FTP Password:</label>
+					<input class="input_xlarge" type="password" name="cf_ftp_password" id="cf_ftp_password" value="{cf_ftp_password}" size="50" maxlength="100" />
+			</fieldset>
+		</div>
+	
+	<input type="submit" value="Submit" />
+	
+	{safecracker_head}
+	{/exp:safecracker}
+	</div>
+	
+	
+{embed='includes/footer'}
+</body>
+</html>	
+	

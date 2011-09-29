@@ -1,0 +1,37 @@
+{embed='includes/head'}
+
+</head>
+<body>
+	<div class="container">
+		<h2>Your Tickets</h2>
+		<table id="tickets">
+			<thead>
+				<td>Ticket Name</td>
+				<td>Date</td>
+				<td>Status</td>
+			</thead>
+
+			{exp:channel:entries channel="support" limit="15" author_id="CURRENT_USER" entry_id="{segment_3}"}
+				
+				<tr class="{switch='odd|even'}">
+					<td><a href="{path='support/ticket/{entry_id}'}">{title}</a></td>
+					<td>{entry_date format="%M %d, %Y"}</td>
+					<td><span class="entrystatus {status}">{status}</span></td>
+				</tr>
+				{if no_results}
+					<tr>
+						<td colspan="3">
+							<div class="note warn">
+								<h4>No Tickets Found</h4>
+								<p>This may be due to the ticket being deleted or closed. If you need additional help, please use the support forum.</p>
+							</div>
+						</td>
+					</tr>
+				{/if}
+			{/exp:channel:entries}
+		</table>
+	</div>
+
+{embed='includes/footer'}
+</body>
+</html>
